@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { geistSans, geistMono } from '@/lib/fonts';
 import { APP_NAME, APP_DESCRIPTION } from '@/constants';
-import './globals.css';
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: {
