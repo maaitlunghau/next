@@ -282,48 +282,36 @@ function AdminSidebar() {
     menuType: "main" | "services" | "management",
   ) => {
     return (
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-1">
         {navItems.map((nav, index) => (
           <li key={nav.name}>
             {nav.subItems ? (
               <button
                 onClick={() => handleSubmenuToggle(index, menuType)}
-                className={`relative flex items-center w-full gap-3 px-4 py-3 font-medium rounded-xl text-[16px]! group ${
+                className={`relative flex items-center w-full gap-3 font-medium text-[15px] group transition-colors ${
                   openSubmenu?.type === menuType && openSubmenu?.index === index
-                    ? "bg-[#1E40af] text-white"
-                    : "text-slate-600 group-hover:text-slate-500 hover:bg-blue-50"
+                    ? "bg-[#1e3a5f] text-white"
+                    : "text-gray-300 hover:text-white hover:bg-[#1e3a5f]/50"
                 } cursor-pointer ${
-                  !isExpanded && !isHovered ? "justify-center" : "justify-start"
+                  !isExpanded && !isHovered
+                    ? "justify-center py-3 px-0"
+                    : "justify-start py-3 px-4"
                 }`}
               >
                 <span
-                  className={`${
-                    openSubmenu?.type === menuType &&
-                    openSubmenu?.index === index
-                      ? "text-white"
-                      : "text-slate-600 group-hover:text-slate-500"
-                  }`}
+                  className={`flex items-center justify-center ${!isExpanded && !isHovered ? "w-full" : ""}`}
                 >
                   {nav.icon}
                 </span>
                 {(isExpanded || isHovered) && (
-                  <span
-                    className={`${
-                      openSubmenu?.type === menuType &&
-                      openSubmenu?.index === index
-                        ? "text-white"
-                        : "text-slate-600 group-hover:text-slate-500"
-                    }`}
-                  >
-                    {nav.name}
-                  </span>
+                  <span className="flex-1 text-left">{nav.name}</span>
                 )}
                 {(isExpanded || isHovered) && (
                   <ChevronDownIcon
-                    className={`ml-auto w-5 h-5 transition-transform duration-200 ${
+                    className={`w-4 h-4 transition-transform duration-200 ${
                       openSubmenu?.type === menuType &&
                       openSubmenu?.index === index
-                        ? "rotate-180 text-white"
+                        ? "rotate-180"
                         : ""
                     }`}
                   />
@@ -332,33 +320,25 @@ function AdminSidebar() {
             ) : (
               nav.path && (
                 <Link
-                  className={`flex items-center w-full gap-3 px-4 py-3 font-medium rounded-xl text-[16px] group
-                                        ${
-                                          isActive(nav.path)
-                                            ? "bg-[#1E40AF]!"
-                                            : "hover:bg-blue-50!"
-                                        }
-                                    `}
+                  className={`flex items-center w-full gap-3 font-medium text-[15px] group transition-colors ${
+                    isActive(nav.path)
+                      ? "bg-[#1e3a5f] text-white"
+                      : "text-gray-300 hover:text-white hover:bg-[#1e3a5f]/50"
+                  } ${
+                    !isExpanded && !isHovered
+                      ? "justify-center py-3 px-0"
+                      : "justify-start py-3 px-4"
+                  }`}
                   href={nav.path}
                 >
                   <span
-                    className={`${
-                      isActive(nav.path)
-                        ? "text-white"
-                        : "text-slate-600 group-hover:text-slate-500"
-                    }`}
+                    className={`flex items-center justify-center ${!isExpanded && !isHovered ? "w-full" : ""}`}
                   >
                     {nav.icon}
                   </span>
-                  <span
-                    className={`${
-                      isActive(nav.path)
-                        ? "text-white"
-                        : "text-slate-600 group-hover:text-slate-500"
-                    }`}
-                  >
-                    {nav.name}
-                  </span>
+                  {(isExpanded || isHovered) && (
+                    <span className="flex-1 text-left">{nav.name}</span>
+                  )}
                 </Link>
               )
             )}
@@ -378,21 +358,19 @@ function AdminSidebar() {
                       : "0px",
                 }}
               >
-                <ul className="mt-2 space-y-1 text-left ml-11">
+                <ul className="mt-1 space-y-0.5 text-left">
                   {nav.subItems.map((subItem) => (
                     <li key={subItem.name}>
                       <Link
-                        className={`flex items-center w-full gap-3 px-6 py-2.5 font-normal rounded-lg text-[14px] group text-slate-300 ${
+                        className={`flex items-center w-full gap-3 pl-12 pr-4 py-2.5 font-normal text-[14px] group transition-colors ${
                           isActive(subItem.path)
-                            ? "text-slate-800"
-                            : "text-slate-600 group-hover:text-slate-500 hover:bg-blue-50!"
+                            ? "text-white bg-[#1e3a5f]/30"
+                            : "text-gray-400 hover:text-white hover:bg-[#1e3a5f]/30"
                         }`}
                         href={subItem.path}
                       >
                         {subItem.name}
                       </Link>
-
-                      {/* new */}
                     </li>
                   ))}
                 </ul>
@@ -406,18 +384,33 @@ function AdminSidebar() {
 
   return (
     <aside
-      className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-white border-r border-gray-200 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50"
+      className={`sticky mt-1 lg:mt-0 flex flex-col top-0 left-0 bg-[#1a2942] border-r border-[#2a3f5f] text-gray-100 h-screen transition-all duration-300 ease-in-out z-50 ${
+        isExpanded || isHovered ? "w-72 px-4" : "w-20 px-2"
+      }`}
       suppressHydrationWarning
+      onMouseEnter={() => !isExpanded && setIsHovered(true)}
+      onMouseLeave={() => !isExpanded && setIsHovered(false)}
     >
       {/* Logo */}
-      <Link href={"/"} className="h-18 py-4.5 px-6 mb-4">
-        <Image
-          src="/images/logo.png"
-          alt=""
-          className="w-auto h-auto"
-          width={200}
-          height={50}
-        />
+      <Link
+        href={"/"}
+        className={`h-18 py-6 mb-2 border-b border-[#2a3f5f] ${
+          isExpanded || isHovered ? "px-2" : "px-0 flex justify-center"
+        }`}
+      >
+        {isExpanded || isHovered ? (
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            className="w-auto h-auto"
+            width={200}
+            height={50}
+          />
+        ) : (
+          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            T
+          </div>
+        )}
       </Link>
 
       {/* Nav Item */}
@@ -432,33 +425,36 @@ function AdminSidebar() {
       ) : (
         <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
           <nav className="mb-6">
-            <div className="flex flex-col gap-4 pt-6">
+            <div className="flex flex-col gap-6 pt-4">
               {/* Menu Item */}
-              <h2
-                className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}
-              >
-                MAIN
-              </h2>
-              {/* render main items */}
-              {renderMenuItems(adminMenuItems, "main")}
+              <div>
+                {(isExpanded || isHovered) && (
+                  <h2 className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3 px-4">
+                    MAIN
+                  </h2>
+                )}
+                {renderMenuItems(adminMenuItems, "main")}
+              </div>
 
               {/* Service Item */}
-              <h2
-                className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}
-              >
-                Dịch vụ
-              </h2>
-              {/* render main items */}
-              {renderMenuItems(adminServiceItems, "services")}
+              <div>
+                {(isExpanded || isHovered) && (
+                  <h2 className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3 px-4">
+                    Dịch vụ
+                  </h2>
+                )}
+                {renderMenuItems(adminServiceItems, "services")}
+              </div>
 
               {/* Managements Item */}
-              <h2
-                className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}
-              >
-                Quản lý
-              </h2>
-              {/* render main items */}
-              {renderMenuItems(adminManagementsItems, "management")}
+              <div>
+                {(isExpanded || isHovered) && (
+                  <h2 className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3 px-4">
+                    Quản lý
+                  </h2>
+                )}
+                {renderMenuItems(adminManagementsItems, "management")}
+              </div>
             </div>
           </nav>
         </div>
