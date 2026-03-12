@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui';
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/common/ui/button";
 
 export default function HomePage(): React.ReactElement {
   return (
@@ -13,16 +13,27 @@ export default function HomePage(): React.ReactElement {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-blue-600 to-indigo-600">
                 <span className="text-lg font-bold text-white">N</span>
               </div>
-              <span className="text-lg font-semibold text-slate-900">NextApp</span>
+              <span className="text-lg font-semibold text-slate-900">
+                NextApp
+              </span>
             </div>
             <nav className="hidden gap-8 md:flex">
-              <Link href="/" className="text-sm font-medium text-slate-700 hover:text-blue-600">
+              <Link
+                href="/"
+                className="text-sm font-medium text-slate-700 hover:text-blue-600"
+              >
                 Trang chủ
               </Link>
-              <Link href="/about" className="text-sm font-medium text-slate-700 hover:text-blue-600">
+              <Link
+                href="/about"
+                className="text-sm font-medium text-slate-700 hover:text-blue-600"
+              >
                 Giới thiệu
               </Link>
-              <Link href="/contact" className="text-sm font-medium text-slate-700 hover:text-blue-600">
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-slate-700 hover:text-blue-600"
+              >
                 Liên hệ
               </Link>
             </nav>
@@ -52,14 +63,18 @@ export default function HomePage(): React.ReactElement {
               </span>
             </h1>
             <p className="mb-8 text-lg leading-relaxed text-slate-600">
-              Nền tảng giúp bạn tập trung vào những gì quan trọng nhất. 
-              Đơn giản, hiệu quả và dễ sử dụng cho mọi dự án.
+              Nền tảng giúp bạn tập trung vào những gì quan trọng nhất. Đơn
+              giản, hiệu quả và dễ sử dụng cho mọi dự án.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 Bắt đầu ngay →
               </Button>
-              <Button variant="outline" size="lg" className="border-slate-600 text-slate-600">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-slate-600 text-slate-600"
+              >
                 Xem demo
               </Button>
             </div>
@@ -87,36 +102,36 @@ export default function HomePage(): React.ReactElement {
             <h2 className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl">
               Tính năng nổi bật
             </h2>
-            <p className="text-lg text-slate-600">
-              Mọi thứ bạn cần để bắt đầu
-            </p>
+            <p className="text-lg text-slate-600">Mọi thứ bạn cần để bắt đầu</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {[
-              { 
-                icon: '⚡', 
-                title: 'Nhanh chóng', 
-                desc: 'Triển khai trong vài phút với hiệu suất tối ưu',
-                color: 'from-amber-500 to-orange-500'
+              {
+                icon: "⚡",
+                title: "Nhanh chóng",
+                desc: "Triển khai trong vài phút với hiệu suất tối ưu",
+                color: "from-amber-500 to-orange-500",
               },
-              { 
-                icon: '🔒', 
-                title: 'An toàn', 
-                desc: 'Bảo mật cấp doanh nghiệp với mã hóa end-to-end',
-                color: 'from-emerald-500 to-teal-500'
+              {
+                icon: "🔒",
+                title: "An toàn",
+                desc: "Bảo mật cấp doanh nghiệp với mã hóa end-to-end",
+                color: "from-emerald-500 to-teal-500",
               },
-              { 
-                icon: '🎨', 
-                title: 'Linh hoạt', 
-                desc: 'Tùy chỉnh theo nhu cầu với API mạnh mẽ',
-                color: 'from-violet-500 to-purple-500'
+              {
+                icon: "🎨",
+                title: "Linh hoạt",
+                desc: "Tùy chỉnh theo nhu cầu với API mạnh mẽ",
+                color: "from-violet-500 to-purple-500",
               },
             ].map((feature, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="group rounded-2xl border border-slate-200 bg-linear-to-br from-slate-50 to-white p-8 transition-all hover:border-slate-300 hover:shadow-lg"
               >
-                <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br ${feature.color} text-3xl shadow-lg`}>
+                <div
+                  className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br ${feature.color} text-3xl shadow-lg`}
+                >
                   {feature.icon}
                 </div>
                 <h3 className="mb-3 text-xl font-semibold text-slate-900">
@@ -134,11 +149,14 @@ export default function HomePage(): React.ReactElement {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-8 md:grid-cols-3">
             {[
-              { value: '10K+', label: 'Người dùng tin tưởng', icon: '👥' },
-              { value: '99.9%', label: 'Thời gian hoạt động', icon: '⚡' },
-              { value: '24/7', label: 'Hỗ trợ khách hàng', icon: '💬' },
+              { value: "10K+", label: "Người dùng tin tưởng", icon: "👥" },
+              { value: "99.9%", label: "Thời gian hoạt động", icon: "⚡" },
+              { value: "24/7", label: "Hỗ trợ khách hàng", icon: "💬" },
             ].map((stat, i) => (
-              <div key={i} className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+              <div
+                key={i}
+                className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm"
+              >
                 <div className="mb-3 text-4xl">{stat.icon}</div>
                 <div className="mb-2 text-4xl font-bold text-slate-900">
                   {stat.value}
@@ -157,7 +175,8 @@ export default function HomePage(): React.ReactElement {
             Sẵn sàng bắt đầu?
           </h2>
           <p className="mb-8 text-lg text-blue-100">
-            Tham gia cùng hàng nghìn người dùng đang sử dụng sản phẩm của chúng tôi
+            Tham gia cùng hàng nghìn người dùng đang sử dụng sản phẩm của chúng
+            tôi
           </p>
           <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
             Dùng thử miễn phí →
@@ -174,16 +193,21 @@ export default function HomePage(): React.ReactElement {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-blue-600 to-indigo-600">
                   <span className="text-sm font-bold text-white">N</span>
                 </div>
-                <span className="text-lg font-semibold text-slate-900">NextApp</span>
+                <span className="text-lg font-semibold text-slate-900">
+                  NextApp
+                </span>
               </div>
               <p className="text-sm text-slate-600">
                 Xây dựng sản phẩm tốt hơn mỗi ngày
               </p>
             </div>
             {[
-              { title: 'Sản phẩm', links: ['Tính năng', 'Giá cả', 'Bảo mật'] },
-              { title: 'Công ty', links: ['Về chúng tôi', 'Blog', 'Tuyển dụng'] },
-              { title: 'Hỗ trợ', links: ['Trợ giúp', 'Liên hệ', 'Điều khoản'] },
+              { title: "Sản phẩm", links: ["Tính năng", "Giá cả", "Bảo mật"] },
+              {
+                title: "Công ty",
+                links: ["Về chúng tôi", "Blog", "Tuyển dụng"],
+              },
+              { title: "Hỗ trợ", links: ["Trợ giúp", "Liên hệ", "Điều khoản"] },
             ].map((col, i) => (
               <div key={i}>
                 <div className="mb-4 text-sm font-semibold text-slate-900">
@@ -192,7 +216,10 @@ export default function HomePage(): React.ReactElement {
                 <ul className="space-y-2">
                   {col.links.map((link, j) => (
                     <li key={j}>
-                      <Link href="/" className="text-sm text-slate-600 hover:text-blue-600">
+                      <Link
+                        href="/"
+                        className="text-sm text-slate-600 hover:text-blue-600"
+                      >
                         {link}
                       </Link>
                     </li>

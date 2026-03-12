@@ -1,13 +1,14 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  reactStrictMode: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "randomuser.me" },
+      { protocol: "https", hostname: "i.pinimg.com" },
+      { protocol: "https", hostname: "upload.wikimedia.org" },
     ],
   },
 };

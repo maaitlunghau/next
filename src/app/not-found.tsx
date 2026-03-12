@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui';
-import { ROUTES } from '@/constants';
+import Link from "next/link";
+import { Button } from "@/components/common/ui/button";
+import { ROUTES } from "@/constants";
 
 export default function NotFound(): React.ReactElement {
   return (

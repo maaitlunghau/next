@@ -1,14 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { Button } from '@/components/ui';
+import { useEffect } from "react";
+import { Button } from "@/components/common/ui/button";
 
 interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
 }
 
-export default function Error({ error, reset }: ErrorProps): React.ReactElement {
+export default function Error({
+  error,
+  reset,
+}: ErrorProps): React.ReactElement {
   useEffect(() => {
     console.error(error);
   }, [error]);
